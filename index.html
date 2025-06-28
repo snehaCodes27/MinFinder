@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<title>Min_finder_by_Sneha</title>
+		<style>	
+			* {
+				font-size: 40px;
+				font-family: Cambria;
+				text-align: center;
+			}
+			body {
+				background-color: #ffe6f0; /* Light pink background */
+			}
+			h1 {
+				background-color: black;
+				color: white;
+				margin: auto;
+				width: 70%;
+				border-radius: 20px;
+			}
+			.btn {
+				background-color: black;
+				border-radius: 90%;
+				width: 100px;
+				height: 100px;
+				border: none;
+				color: white;
+				cursor: pointer;
+				transition: 0.3s;
+			}
+			.btn:hover {
+				background-color: #333;
+				transform: scale(1.05);
+			}
+		</style>
+	</head>
+	<body>
+		<h1> MIN FINDER APP</h1> <br/>
+		<form onsubmit="find()">
+			<input type="number" step="any" id="n1" placeholder="Enter first number"> <br/><br/>
+			<input type="number" step="any" id="n2" placeholder="Enter second number"><br/><br/>
+			<input type="submit" value="M1" class="btn">
+			<input type="submit" value="M2" class="btn">
+			<input type="submit" value="M3" class="btn">
+		</form>
+		<h2 id="msg"></h2>
+		<script>
+			function find() {
+				event.preventDefault();
+				let n1 = document.getElementById("n1");
+				let n2 = document.getElementById("n2");
+				let msg = document.getElementById("msg");
+				if (n1.value === "") {
+					alert("Please enter first number");
+					msg.innerHTML = "";
+					n1.focus();
+					return;
+				}
+				if (n2.value === "") {
+					alert("Please enter second number");
+					msg.innerHTML = "";
+					n2.focus();
+					return;
+				}
+				let action = document.activeElement.value;
+				let num1 = parseFloat(n1.value);
+				let num2 = parseFloat(n2.value);
+				let res = "";
+				if (action === "M1") {
+					res = num1 < num2 ? "min = " + num1 : "min = " + num2;
+					msg.innerHTML = "M1 -> " + res;
+				} else if (action === "M2") {
+					if (num1 < num2) {
+						res = "min = " + num1;
+					} else {
+						res = "min = " + num2;
+					}
+					msg.innerHTML = "M2 -> " + res;
+				} else if (action === "M3") {
+					res = Math.min(num1, num2);
+					msg.innerHTML = "M3 -> min = " + res;
+				}
+			}
+		</script>
+	</body>
+</html>
